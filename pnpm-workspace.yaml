@@ -1,0 +1,11 @@
+packages:
+  - '.'
+
+# Explicit allowlist for postinstall build scripts
+allowBuilds:
+  '0': esbuild
+  '1': '@swc/core'
+
+# Safety: refuse to install packages newer than this many days
+# Pin transitive deps via `overrides` if blocked by this check.
+minimumReleaseAge: 7

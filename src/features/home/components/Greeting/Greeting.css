@@ -1,0 +1,41 @@
+@layer components {
+  .greeting {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-6);
+    background-color: var(--color-surface);
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  .greeting__title {
+    margin: 0;
+    font-size: 1.25rem;
+  }
+
+  .greeting__body {
+    margin: 0;
+    color: var(--color-muted);
+  }
+
+  .greeting__button {
+    justify-self: start;
+    padding-block: var(--space-2);
+    padding-inline: var(--space-4);
+    border-radius: var(--radius-sm);
+    border: 1px solid transparent;
+    background-color: var(--color-accent);
+    color: var(--color-accent-fg);
+    font: inherit;
+    cursor: pointer;
+    transition: filter 150ms ease;
+  }
+
+  .greeting__button:hover {
+    filter: brightness(1.05);
+  }
+
+  .greeting__button:active {
+    filter: brightness(0.95);
+  }
+}
