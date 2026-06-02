@@ -1,19 +1,15 @@
-import { Greeting } from './components/Greeting';
-
-import "./Home.css";
+import { PositionalChange } from './components/PositionalChange';
 
 export function HomePage() {
   return (
-    <main className="home">
+    <main>
       <header>
         <h1>mount-surprisius</h1>
         <p>Text</p>
       </header>
-
-      <section>
-        <h2>Change of order of components</h2>
-
-        <Greeting name="world" />
+      <section aria-labelledby="positional-change-headline">
+        <h2 id="positional-change-headline">Change of order of components</h2>
+        <PositionalChange />
       </section>
     </main>
   );

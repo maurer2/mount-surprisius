@@ -1,0 +1,37 @@
+{
+  "editor.defaultFormatter": "oxfmt.oxfmt",
+  "editor.formatOnSave": true,
+  "[typescript]": {
+    "editor.defaultFormatter": "oxfmt.oxfmt"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "oxfmt.oxfmt"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "oxfmt.oxfmt"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "oxfmt.oxfmt"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "oxfmt.oxfmt"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "oxfmt.oxfmt"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "oxfmt.oxfmt"
+  },
+  "spellright.language": [
+    "en"
+  ],
+  "spellright.documentTypes": [
+    "markdown",
+    "latex",
+    "plaintext",
+    "typescriptreact"
+  ]
+}

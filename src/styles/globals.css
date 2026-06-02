@@ -8,7 +8,7 @@
     --color-bg: oklch(99% 0.005 270);
     --color-fg: oklch(20% 0.02 270);
     --color-muted: oklch(55% 0.02 270);
-    --color-surface: oklch(97% 0.01 270);
+    --color-surface: oklch(96.988% 0.00999 267.408 / 0.311);
     --color-border: oklch(90% 0.01 270);
     --color-accent: oklch(60% 0.18 250);
     --color-accent-fg: oklch(99% 0.005 250);
@@ -56,10 +56,15 @@
   }
 
   body {
-    margin: 0;
     min-block-size: 100dvb;
     background-color: var(--color-bg);
     color: var(--color-fg);
+  }
+
+  main {
+    inline-size: min(100%, 1280px);
+    margin-inline: auto;
+    padding-inline: 1rem;
   }
 
   h1,
