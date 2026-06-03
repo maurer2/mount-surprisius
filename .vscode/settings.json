@@ -1,37 +1,41 @@
 {
-  "editor.defaultFormatter": "oxfmt.oxfmt",
+  "editor.defaultFormatter": "oxc.oxc-vscode",
   "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "file",
   "[typescript]": {
-    "editor.defaultFormatter": "oxfmt.oxfmt"
+    "editor.defaultFormatter": "oxc.oxc-vscode"
   },
   "[typescriptreact]": {
     "editor.defaultFormatter": "oxc.oxc-vscode"
   },
   "[javascript]": {
-    "editor.defaultFormatter": "oxfmt.oxfmt"
+    "editor.defaultFormatter": "oxc.oxc-vscode"
   },
   "[javascriptreact]": {
-    "editor.defaultFormatter": "oxfmt.oxfmt"
+    "editor.defaultFormatter": "oxc.oxc-vscode"
   },
   "[json]": {
-    "editor.defaultFormatter": "oxfmt.oxfmt"
+    "editor.defaultFormatter": "oxc.oxc-vscode"
   },
   "[jsonc]": {
-    "editor.defaultFormatter": "oxfmt.oxfmt"
+    "editor.defaultFormatter": "oxc.oxc-vscode"
   },
   "[css]": {
-    "editor.defaultFormatter": "oxfmt.oxfmt"
+    "editor.defaultFormatter": "oxc.oxc-vscode"
   },
   "[markdown]": {
-    "editor.defaultFormatter": "oxfmt.oxfmt"
+    "editor.defaultFormatter": "oxc.oxc-vscode"
   },
-  "spellright.language": [
-    "en"
-  ],
+  "spellright.language": ["en"],
   "spellright.documentTypes": [
     "markdown",
-    "latex",
     "plaintext",
-    "typescriptreact"
+    "css",
+    "html",
+    "javascript",
+    "typescript",
+    "typescriptreact",
+    "json",
+    "jsonc"
   ]
 }

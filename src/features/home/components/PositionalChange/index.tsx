@@ -32,9 +32,13 @@ function ConditionallyRenderedElement() {
   );
 }
 
-function Sensor() {
+type SensorProps = {
+  name: string;
+};
+
+function Sensor({ name }: SensorProps) {
   useEffect(() => {
-    console.log('Sensor mounted');
+    console.log(`${name} mounted`);
   }, []);
 
   return <span>Sensor</span>;
@@ -50,25 +54,64 @@ export function PositionalChange() {
   const [isVisible, toggleIsVisible] = useReducer((isVisible) => !isVisible, true);
 
   return (
-    <div className="positional-change">
+    <article className="positional-change">
+      <Button isVisible={isVisible} toggleIsVisible={toggleIsVisible} />
+
+      <h3>Remounts on position change</h3>
+      <p>
+        When the conditionally rendered element is removed, React compares each index in the list of
+        children against the same index in the new list to detect positional changes. At index 0, it
+        previously detected <em>ConditionallyRenderedElement</em> and now detects <em>Sensor</em>.
+        As those elements are of a different type <em>Sensor</em> gets remounted instead of
+        rerendered.
+      </p>
       {isVisible ? (
         <>
-          <Button isVisible={isVisible} toggleIsVisible={toggleIsVisible} />
-          {/* <> */}
-          {/* doesn't unmount and remount if wrapped in a fragment in both cases as fragment avoids positional change */}
           <ConditionallyRenderedElement />
-          {/* </> */}
-          <Sensor /> {/* unmounts and remounts */}
-          {/* <Sensor key="sensor" /> doesn't unmount and remount */}
+          <Sensor name="Sensor 1" />
         </>
       ) : (
         <>
-          <Button isVisible={isVisible} toggleIsVisible={toggleIsVisible} />
-          {/* <></> */}
-          <Sensor /> {/* unmounts and remounts */}
-          {/* <Sensor key="sensor" /> doesn't unmount and remount */}
+          <Sensor name="Sensor 1" />
         </>
       )}
-    </div>
+
+      <h3>Workaround: Using fragments</h3>
+      <p>
+        In both branches a fragment is placed at index 0, that never changes type between rerenders
+        even when the content of said fragment changes. React can reuse <em>Sensor</em> and rerender
+        it instead of remounting it.
+      </p>
+      {isVisible ? (
+        <>
+          <>
+            <ConditionallyRenderedElement />
+          </>
+          <Sensor name="Sensor 2" />
+        </>
+      ) : (
+        <>
+          <></>
+          <Sensor name="Sensor 2" />
+        </>
+      )}
+
+      <h3>Workaround: Using stable keys</h3>
+      <p>
+        In both branches <em>Sensor</em> has a stable key. When a key is present, React matches by
+        key rather than by position. Since <em>Sensor</em>'s key is the same in both branches, React
+        identifies it as the same instance and rerenders rather than remounts it.
+      </p>
+      {isVisible ? (
+        <>
+          <ConditionallyRenderedElement />
+          <Sensor name="Sensor 3" key="sensor-3" />
+        </>
+      ) : (
+        <>
+          <Sensor name="Sensor 3" key="sensor-3" />
+        </>
+      )}
+    </article>
   );
 }
