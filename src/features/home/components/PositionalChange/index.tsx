@@ -59,11 +59,10 @@ export function PositionalChange() {
 
       <h3>Remounts on position change</h3>
       <p>
-        When the conditionally rendered element is removed, React compares each index in the list of
-        children against the same index in the new list to detect positional changes. At index 0, it
-        previously detected <em>ConditionallyRenderedElement</em> and now detects <em>Sensor</em>.
-        As those elements are of a different type <em>Sensor</em> gets remounted instead of
-        rerendered.
+        When <em>ConditionallyRenderedElement</em> is removed, React compares each index in the list
+        of children against the same index in the new list. At index 0, it previously detected{' '}
+        <em>ConditionallyRenderedElement</em> and now sees <em>Sensor</em>. As those elements are of
+        a different type <em>Sensor</em> gets remounted instead of rerendered.
       </p>
       {isVisible ? (
         <>
@@ -71,16 +70,16 @@ export function PositionalChange() {
           <Sensor name="Sensor 1" />
         </>
       ) : (
-        <>
-          <Sensor name="Sensor 1" />
-        </>
+        <Sensor name="Sensor 1" />
       )}
 
-      <h3>Workaround: Using fragments</h3>
+      <h3>
+        Workaround: Using <em>Fragment</em>s (or actual dom elements)
+      </h3>
       <p>
-        In both branches a fragment is placed at index 0, that never changes type between rerenders
-        even when the content of said fragment changes. React can reuse <em>Sensor</em> and rerender
-        it instead of remounting it.
+        In each branche a <em>Fragment</em> is placed at index 0, that never changes type between
+        rerenders even when the contents of those <em>Fragment</em>s change. React reuses{' '}
+        <em>Sensor</em> and rerendes it instead of remounting it.
       </p>
       {isVisible ? (
         <>
@@ -98,9 +97,15 @@ export function PositionalChange() {
 
       <h3>Workaround: Using stable keys</h3>
       <p>
-        In both branches <em>Sensor</em> has a stable key. When a key is present, React matches by
-        key rather than by position. Since <em>Sensor</em>'s key is the same in both branches, React
-        identifies it as the same instance and rerenders rather than remounts it.
+        In both branches <em>Sensor</em> has a stable key. When a key is present, React uses that
+        key to identify the keyed element, ignoring its position within the sibling list as long as
+        the type remains the same. Since <em>Sensor</em>'s key is the same in both branches, React
+        identifies <em>Sensor</em> as the same instance and rerenders <em>Sensor</em> instead of
+        remounting it. Both branches still need to produce the same element type at the top level
+        slot, therefore both branches need to be wrapped in <em>Fragment</em>s (or dom-elements). If
+        the visible branch returns a <em>Fragment</em> and the hidden branch returns <em>Sensor</em>{' '}
+        directly without a fragment, React sees a type change at that position and remounts
+        regardless of the key on <em>Sensor</em>.
       </p>
       {isVisible ? (
         <>
@@ -112,6 +117,18 @@ export function PositionalChange() {
           <Sensor name="Sensor 3" key="sensor-3" />
         </>
       )}
+
+      <h3>
+        Workaround: Avoid positional change with <em>null</em> placeholder
+      </h3>
+      <p>
+        In this case the first slot is always occupied by either
+        <em>ConditionallyRenderedElement</em> when visible or <em>null</em> when hidden. So{' '}
+        <em>Sensor</em> always stays at index 1. React detects the same component type at the same
+        index and rerenders <em>Sensor</em> instead of remounting it.
+      </p>
+      {isVisible ? <ConditionallyRenderedElement /> : null}
+      <Sensor name="Sensor 4" />
     </article>
   );
 }
