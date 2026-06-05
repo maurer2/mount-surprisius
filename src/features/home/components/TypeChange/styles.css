@@ -1,0 +1,55 @@
+@layer components {
+  @scope (.type-change) {
+    :scope {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .toggle-button {
+      cursor: pointer;
+      border: 2px solid currentColor;
+      padding-block: 0.375rem;
+      padding-inline: 0.75rem;
+      border-radius: 0.25rem;
+      background-color: transparent;
+
+      &[aria-pressed='true'] {
+        background-color: canvastext;
+        color: canvas;
+
+        &::after {
+          content: '-';
+          margin-inline-start: 0.25rem;
+        }
+      }
+
+      &[aria-pressed='false'] {
+        background-color: canvas;
+        color: canvastext;
+
+        &::after {
+          content: '+';
+          margin-inline-start: 0.25rem;
+        }
+      }
+    }
+
+    .list {
+      margin-block: 0;
+
+      &:is(ul) {
+        list-style-type: square;
+      }
+
+      &:is(ol) {
+        list-style-type: upper-roman;
+      }
+
+      li::marker {
+        font-weight: bold;
+      }
+    }
+  }
+}
