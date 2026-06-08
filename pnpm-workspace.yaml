@@ -1,11 +1,23 @@
-packages:
-  - '.'
-
-# Explicit allowlist for postinstall build scripts
 allowBuilds:
-  '0': esbuild
-  '1': '@swc/core'
+  esbuild: true
 
-# Safety: refuse to install packages newer than this many days
-# Pin transitive deps via `overrides` if blocked by this check.
-minimumReleaseAge: 7
+minimumReleaseAge: 10080 # 7 days
+blockExoticSubdeps: true # no git branch as package url
+minimumReleaseAgeExclude:
+  - "@oxfmt/binding-android-arm-eabi"
+  - "@types/react"
+  - "@types/react-dom"
+  - "@types/node"
+  - "react"
+  - "react-dom"
+
+resolutionMode: highest
+
+supportedArchitectures:
+  cpu:
+    - arm64
+    - x64
+  os:
+    - darwin
+    - linux
+    - win32

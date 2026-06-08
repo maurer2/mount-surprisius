@@ -34,7 +34,7 @@ function ListContent({ items }: ListContentProps) {
 }
 
 export function TypeChange() {
-  const [isUnordered, toggleIsUnordered] = useReducer((isUnordered) => !isUnordered, true);
+  const [isUnordered, toggleIsUnordered] = useReducer((state) => !state, true);
 
   return (
     <article className="type-change">

@@ -3,17 +3,17 @@ import { useEffect, useReducer } from 'react';
 import './styles.css';
 
 type ButtonProps = {
-  isVisible: boolean;
-  toggleIsVisible: () => void;
+  isActive: boolean;
+  onClick: () => void;
 };
 
-function Button({ isVisible, toggleIsVisible }: ButtonProps) {
+function Button({ isActive, onClick }: ButtonProps) {
   return (
     <button
       type="button"
-      aria-expanded={isVisible}
+      aria-expanded={isActive}
       aria-controls="conditionally-rendered-element"
-      onClick={toggleIsVisible}
+      onClick={onClick}
       className="toggle-button"
     >
       Conditionally rendered element
@@ -39,7 +39,7 @@ type SensorProps = {
 function Sensor({ name }: SensorProps) {
   useEffect(() => {
     console.log(`${name} mounted`);
-  }, []);
+  }, [name]);
 
   return <span>Sensor</span>;
 }
@@ -51,11 +51,11 @@ function Sensor({ name }: SensorProps) {
 // <Sensor />;
 
 export function PositionalChange() {
-  const [isVisible, toggleIsVisible] = useReducer((isVisible) => !isVisible, true);
+  const [isVisible, toggleIsVisible] = useReducer((state) => !state, true);
 
   return (
     <article className="positional-change">
-      <Button isVisible={isVisible} toggleIsVisible={toggleIsVisible} />
+      <Button isActive={isVisible} onClick={toggleIsVisible} />
 
       <h3>Remounts on position change</h3>
       <p>

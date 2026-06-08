@@ -1,0 +1,24 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["react", "typescript", "unicorn", "oxc", "eslint", "jsx-a11y", "promise"],
+  "categories": {
+    "correctness": "error",
+    "suspicious": "warn",
+  },
+  "settings": {
+    "react": {
+      "version": "19",
+    },
+  },
+  "options": {
+    "typeAware": true,
+    "typeCheck": true,
+  },
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+  },
+  "env": {
+    "browser": true,
+    "builtin": true,
+  },
+}

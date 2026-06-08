@@ -26,12 +26,7 @@
     "skipLibCheck": true,
     "noEmit": true,
 
-    "useDefineForClassFields": true,
-
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"]
-    }
+    "useDefineForClassFields": true
   },
   "include": ["src"]
 }
