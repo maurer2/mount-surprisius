@@ -59,10 +59,13 @@ export function PositionalChange() {
 
       <h3>Remounts on position change</h3>
       <p>
-        When <em>ConditionallyRenderedElement</em> is removed, React compares each index in the list
-        of children against the same index in the new list. At index 0, it previously detected{' '}
-        <em>ConditionallyRenderedElement</em> and now sees <em>Sensor</em>. As those elements are of
-        a different type <em>Sensor</em> gets remounted instead of rerendered.
+        When <em>ConditionallyRenderedElement</em> is removed, React compares each index in the
+        surrounding <em>Fragment</em>'s list of children against the same index in the new list. At
+        index 0, it previously detected <em>ConditionallyRenderedElement</em> and now sees{' '}
+        <em>Sensor</em>. As those elements are of a different type <em>Sensor</em> gets remounted
+        instead of rerendered. If the hidden branch returns <em>Sensor</em> directly without a
+        wrapping <em>Fragment</em>, the conditional's slot itself would change type from{' '}
+        <em>Fragment</em> to <em>Sensor</em>, causing React to remount <em>Sensor</em>.
       </p>
       {isVisible ? (
         <>
@@ -70,16 +73,18 @@ export function PositionalChange() {
           <Sensor name="Sensor 1" />
         </>
       ) : (
-        <Sensor name="Sensor 1" />
+        <>
+          <Sensor name="Sensor 1" />
+        </>
       )}
 
       <h3>
         Workaround: Using <em>Fragment</em>s (or actual dom elements)
       </h3>
       <p>
-        In each branche a <em>Fragment</em> is placed at index 0, that never changes type between
+        In each branch a <em>Fragment</em> is placed at index 0, that never changes type between
         rerenders even when the contents of those <em>Fragment</em>s change. React reuses{' '}
-        <em>Sensor</em> and rerendes it instead of remounting it.
+        <em>Sensor</em> and rerenders it instead of remounting it.
       </p>
       {isVisible ? (
         <>
