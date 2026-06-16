@@ -5,11 +5,11 @@ minimumReleaseAge: 10080 # 7 days
 blockExoticSubdeps: true # no git branch as package url
 minimumReleaseAgeExclude:
   - "@oxfmt/binding-android-arm-eabi"
-  - "@types/react"
-  - "@types/react-dom"
   - "@types/node"
   - "react"
   - "react-dom"
+  - "oxlint@1.70.0"
+  - "@oxlint/binding-*"
 
 resolutionMode: highest
 
