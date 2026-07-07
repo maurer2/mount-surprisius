@@ -1,0 +1,32 @@
+@layer components {
+  @scope (.main) to (.example) {
+    :scope {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .section {
+      border-block-start: 5px solid var(--color-fg);
+
+      @supports (background-clip: border-area) {
+        --gradient-width: 25dvi;
+
+        border-block-start-color: transparent;
+        background-image: linear-gradient(
+          to right,
+          transparent 0,
+          var(--color-fg) var(--gradient-width),
+          var(--color-fg) calc(100% - var(--gradient-width)),
+          transparent 100%
+        );
+        background-clip: border-area;
+      }
+    }
+
+    /* donut check */
+    .example {
+      background: red;
+    }
+  }
+}

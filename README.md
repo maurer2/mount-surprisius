@@ -2,10 +2,14 @@
 
 <img src="image.webp" alt="Mount Surprisius" width="600">
 
-### Change of order of child components
+## Change of order of child components
 
 /#positional-change-headline
 
-### Key change
+## Key change
 
-### Element tag name of wrapper component changes (Polymorphic component)
+## Component type change
+
+## Effects rerun on reorder of keyed components (React 19 bug)
+
+https://github.com/react/react/issues/29585

@@ -1,0 +1,36 @@
+@layer components {
+  @scope (.keyed-reorder) {
+    :scope {
+      display: flex;
+      margin-block-end: 2rem;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .toggle-button {
+      cursor: pointer;
+      border: 2px solid currentColor;
+      padding-block: 0.375rem;
+      padding-inline: 0.75rem;
+      border-radius: 0.25rem;
+      background-color: transparent;
+
+      &[aria-pressed='true'] {
+        background-color: canvastext;
+        color: canvas;
+      }
+
+      &[aria-pressed='false'] {
+        background-color: canvas;
+        color: canvastext;
+      }
+    }
+
+    .box {
+      padding-block: 0.375rem;
+      padding-inline: 0.75rem;
+      border: 2px solid var(--color-border);
+    }
+  }
+}
